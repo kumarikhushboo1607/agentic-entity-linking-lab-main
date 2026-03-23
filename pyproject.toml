@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wikidata-entity-linking-lab"
+version = "0.1.0"
+description = "Student-facing Wikidata entity linking lab"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+notebook = [
+    "jupyter>=1.1.1",
+]
+vectors = [
+    "sentence-transformers>=5.1.0,<6",
+]
+agentic = [
+    "anyio>=4.0.0",
+    "claude-agent-sdk>=0.1.19",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
