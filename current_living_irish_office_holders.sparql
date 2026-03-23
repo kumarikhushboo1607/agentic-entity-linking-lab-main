@@ -1,0 +1,14 @@
+SELECT DISTINCT ?person ?personLabel ?office ?officeLabel WHERE {
+  ?person wdt:P31 wd:Q5;
+          wdt:P27 wd:Q27;
+          wdt:P106 wd:Q82955;
+          p:P39 ?positionStatement.
+  ?positionStatement ps:P39 ?office.
+
+  FILTER NOT EXISTS { ?person wdt:P570 ?dateOfDeath }
+  FILTER NOT EXISTS { ?positionStatement pq:P582 ?endTime }
+  FILTER EXISTS { ?office (wdt:P17|wdt:P1001) wd:Q27 }
+
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+ORDER BY ?personLabel
